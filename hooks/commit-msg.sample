@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# An example hook script to check the commit log message.  检查提交日志消息的示例钩子脚本。
+# Called by "git commit" with one argument, the name of the file  由“git commit”调用，带有一个参数，即文件名
+# that has the commit message.  The hook should exit with non-zero  有提交消息的。钩子应该以非零退出
+# status after issuing an appropriate message if it wants to stop the  如果要停止
+# commit.  The hook is allowed to edit the commit message file. 承诺。允许钩子编辑提交消息文件。
+#
+# To enable this hook, rename this file to "commit-msg". 若要启用此挂钩，请将此文件重命名为“commit msg”。
+
+# Uncomment the below to add a Signed-off-by line to the message.  取消对下面的注释，以便在邮件中添加“按行签名”。
+# Doing this in a hook is a bad idea in general, but the prepare-commit-msg 在钩子中这样做通常是个坏主意，但是prepare commit msg
+# hook is more suited to it.   钩子更适合它。
+#
+# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+# This example catches duplicate Signed-off-by lines.
+
+test "" = "$(grep '^Signed-off-by: ' "$1" |
+	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
+	echo >&2 Duplicate Signed-off-by lines.
+	exit 1
+}

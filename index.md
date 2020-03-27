@@ -11,3 +11,7 @@
 [branch "master"]
 	remote = origin
 	merge = refs/heads/master
+
+
+# hooks	
+## commit-msg.sample  格式自动检查实战
