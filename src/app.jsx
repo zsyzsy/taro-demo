@@ -10,13 +10,13 @@ import './app.scss'
 
 class App extends Component {
 
-  componentDidMount () {}
+  componentDidMount() { }
 
-  componentDidShow () {}
+  componentDidShow() { }
 
-  componentDidHide () {}
+  componentDidHide() { }
 
-  componentDidCatchError () {}
+  componentDidCatchError() { }
 
   config = {
     pages: [
@@ -27,12 +27,43 @@ class App extends Component {
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
-    }
+    },
+    "tabBar": {
+      "backgroundColor": "#fff",
+      "color": "#91a7ae",
+      "selectedColor": "#0098d5",
+      "list": [
+        {
+          "pagePath": "pages/map/index",
+          "text": "首页",
+          "iconPath": "imgs/home.png",
+          "selectedIconPath": "imgs/home_selected.png"
+        },
+        {
+          "pagePath": "pages/login/index",
+          "text": "列表",
+          "iconPath": "imgs/list.png",
+          "selectedIconPath": "imgs/list_selected.png"
+        },
+        // {
+        //   "pagePath": "pages/financing-list/index",
+        //   "text": "贷后管理",
+        //   "iconPath": "imgs/manage.png",
+        //   "selectedIconPath": "imgs/manage_selected.png"
+        // },
+        // {
+        //   "pagePath": "pages/my/my",
+        //   "text": "个人中心",
+        //   "iconPath": "imgs/my.png",
+        //   "selectedIconPath": "imgs/my_selected.png"
+        // }
+      ]
+    },
   }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render () {
+  render() {
     return (
       <Index />
     )
